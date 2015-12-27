@@ -4,23 +4,17 @@ import java.util.List;
  * Created by yingzong on 11/5/15.
  */
 public class HouseRobber {
-    public int minimumTotal(List<List<Integer>> triangle) {
-        int h = triangle.size();
-        int[][] path = new int[h][h];
-        //initial
-        for(int i = 0; i < h; i++){
-            path[h - 1][i] = triangle.get(h - 1).get(i);
-        }
+	public int rob(int[] nums) {
+		if(nums.length < 1){
+			return 0;
+		}
+		int[] sum = new int[nums.length + 1];
+		sum[0] = 0;
+		sum[1] = nums[0];
 
-        //function
-        for(int i = h - 1; i >= 0; i--){
-            for(int j = 0; j <= i; j++){
-                path[i][j] = Math.min(path[i + 1][j],path[i + 1][j + 1]) + triangle.get(i).get(j);
-            }
-        }
-        //answer
-        return path[0][0];
-
-
-    }
+		for(int i = 2; i < nums.length + 1; i++){
+			sum[i] = Math.max(sum[i - 1], sum[i - 2] + nums[i - 1]);
+		}
+		return sum[nums.length];
+	}
 }
