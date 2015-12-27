@@ -8,25 +8,26 @@ public class BinaryTreePaths {
 		if(root == null) {
 			return result;
 		}
-		String s = "";
+		String s = "" + root.val;
 		dfs(root, s, result);
 		return result;
 	}
 
 	private void dfs(TreeNode root, String s, List<String> result) {
 		if(root == null) {
+			return;
+		}
+		if(root.right == null && root.left == null) {
 			result.add(s);
 			return;
 		}
-		if(s.length() == 0) {
-			s = s + root.val;
-		} else {
-			s = s + "->" + root.val;
+		if(root.left != null) {
+			dfs(root.left, s + "->" + root.left.val, result);
 		}
-		dfs(root.left, s, result);
-		dfs(root.right, s, result);
-	}
-	
+		if(root.right != null) {
+			dfs(root.right, s + "->" + root.right.val, result);
+		}
+	}	
 	private class TreeNode {
 		int val;
 		TreeNode left;

@@ -1,11 +1,5 @@
 
 public class MultiplyStrings {
-	public static void main(String[] args) {
-		String s1 = "123";
-		String s2 = "100";
-		String s3 = multiply(s1,s2);
-		System.out.println(s3);
-	}
 
 	public static String multiply(String num1, String num2) {
 		if(num1 == null || num2 == null) {

@@ -4,7 +4,7 @@ public class MinimumWindowSubstring {
 		int[] sMap = new int[128]; 
 		int[] tMap = new int[128];
 		int start = 0;
-		int end = 0; //[start, end]
+		int end = 0; //[start, end)
 		int min = Integer.MAX_VALUE;
 		String result = "";
 		
